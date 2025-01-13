@@ -1,6 +1,6 @@
 const { log } = require('console');
 const http = require('http');
-
+const fs = require('fs');
 const serveur = http.createServer((requete, reponse) => {
     // console.log("Serveur crée");
     // console.log(requete);
@@ -12,7 +12,7 @@ const serveur = http.createServer((requete, reponse) => {
     // Définition de la reponse
 
     reponse.write("<head><meta charset='utf8'></head>");
-    
+
     if(requete.url === "/accueil") {
         reponse.write("<p>Bienvenue très cher développeur</p>");
     } else if (requete.url === "/profil") {
