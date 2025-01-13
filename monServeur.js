@@ -9,18 +9,29 @@ const serveur = http.createServer((requete, reponse) => {
 
     reponse.setHeader('content-type', "text/html");
 
+        let fichier = "";
     // Définition de la reponse
 
     reponse.write("<head><meta charset='utf8'></head>");
 
     if(requete.url === "/accueil") {
-        reponse.write("<p>Bienvenue très cher développeur</p>");
+        fichier = "./IHM/accueil.html";
+
     } else if (requete.url === "/profil") {
-        reponse.write("<p>Vous êtes un développeur backend</p>");
+        fichier = "./IHM/profil.html";;
     } else {
-        reponse.write("<p>L'URL est incorrect</p>");
+        fichier = "./IHM/erreur.html";
     }
-    reponse.end();
+    fs.readFile(fichier, (erreur, donnee) => {
+        if(erreur) {
+            console.log(erreur);
+            reponse.end();
+            
+        } else {
+            // reponse.write(donnee);
+            reponse.end(donnee);
+        }
+    });
 })
 
 
