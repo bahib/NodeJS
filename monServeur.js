@@ -1,9 +1,13 @@
 const { log } = require('console');
 const http = require('http');
 const fs = require('fs');
+const uuid = require('uuid');
+
 const serveur = http.createServer((requete, reponse) => {
     // console.log("Serveur crée");
     // console.log(requete);
+    
+    console.log(uuid.v4());
     
     // Définition de l'en-tête
 
